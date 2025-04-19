@@ -1,0 +1,85 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "GCC compile active C program",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-o",
+                "${fileBasenameNoExtension}",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "GCC run active C program",
+            "type": "shell",
+            "command": "./${fileBasenameNoExtension}",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "GCC delete active C executable",
+            "type": "shell",
+            "command": "rm",
+            "args": [ "${fileBasenameNoExtension}" ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "GCC build & run active C program",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "GCC compile active C program",
+                "GCC run active C program"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}
