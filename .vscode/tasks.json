@@ -2,11 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "GCC compile active C program",
+            "label": "C/C++:gcc: compile active C program",
             "type": "shell",
             "command": "gcc",
             "args": [
                 "-Wall",
+                "-g",
                 "-o",
                 "${fileBasenameNoExtension}",
                 "${file}"
@@ -24,50 +25,49 @@
             },
             "group": {
                 "kind": "build",
+                "isDefault": false,
+            },
+            "windows": {
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            }
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++:clang: compile active C program",
+            "command": "clang",
+            "args": [
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": {
+                "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label": "GCC run active C program",
-            "type": "shell",
-            "command": "./${fileBasenameNoExtension}",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": false,
-                "clear": false
-            }
-        },
-        {
-            "label": "GCC delete active C executable",
-            "type": "shell",
-            "command": "rm",
-            "args": [ "${fileBasenameNoExtension}" ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
-        },
-        {
-            "label": "GCC build & run active C program",
+            "label": "C/C++: run active C program",
             "type": "shell",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "GCC compile active C program",
-                "GCC run active C program"
+                "C/C++:clang: compile active C program"
             ],
+            "command": "./${fileBasenameNoExtension}",
+            "windows": {
+                "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "dependsOn": [
+                    "C/C++:gcc: compile active C program"
+                ]
+            },
             "group": {
                 "kind": "test",
                 "isDefault": true

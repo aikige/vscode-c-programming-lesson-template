@@ -1,8 +1,23 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug C Program",
+            "name": "C/C++:clang: build and debug active C program",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++:clang: compile active C program",
+            "windows": {
+                "program": "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            }
+        },
+        {
+            "name": "C/C++:gdb: build and debug active C program",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
@@ -12,14 +27,11 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "GCC compile active C program" // Pre-debug task
+            "preLaunchTask": "C/C++:gcc: compile active C program",
+            "windows": {
+                "program": "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            }
         }
-    ]
+    ],
+    "version": "2.0.0"
 }
