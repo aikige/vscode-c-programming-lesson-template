@@ -18,20 +18,27 @@ Here, the source code is assumed to include `main()` and not depend on external 
     1. Click `Select and Start Debug Configuration button in status bar.
 
 ## Preparing C Programming Environment
-
-This setting assumes LLVM based C programming environment (i.e. uses `clang` as compiler and `lldb` as debugger) and this section provides environment which is verified to work.
-
-## Windows
-
 [scoop]:https://scoop.sh/
+[MinGW]:https://www.mingw-w64.org/
 [LLVM]:https://www.llvm.org/
-If you do not have `clang` and `lldb` installed, it is recommended to install [LLVM] environment (which includes `clang` and `lldb`) using [scoop].
+
+This setting assumes [LLVM] based C programming environment (i.e. uses `clang` as compiler and `lldb` as debugger) on MacOS environment.
+And [MinGW] environment (i.e. uses `gcc` as compiler and `gdb` for debugger) on Windows.
+
+## Windows: Preparation of MinGW Environment.
+
+If you do not have `gcc` and `gdb` installed, it is recommended to install [MinGW] environment (which includes `gcc` and `gdb`) using [scoop].
 
 ```
-scoop install main/llvm
+scoop install main/mingw
 ```
 
-## MacOS
+### Note
+
+* LLVM/clang/lldb is not used since scoop version of `lldb` has problem.
+
+## MacOS: Preparation of LLVM Environment
 
 Please follow instruction in VS Code official site:
+
 * [Using Clang in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-clang-mac)

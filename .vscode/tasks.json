@@ -2,8 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
-            "label": "C/C++:clang: compile active C program",
+            "type": "process",
+            "label": "C/C++: compile active C program",
             "command": "clang",
             "args": [
                 "-fcolor-diagnostics",
@@ -14,15 +14,15 @@
                 "${fileDirname}/${fileBasenameNoExtension}.out"
             ],
 			"windows": {
-				"command": "clang",
+                // Use gcc for Windows.
+				"command": "gcc",
 				"args": [
-					"-fcolor-diagnostics",
-					"-fansi-escape-codes",
-					"-g",
-					"${file}",
-					"-o",
-					"${fileDirname}\\${fileBasenameNoExtension}.exe"
-				]
+                    "-Wall",
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                ]
 			},
             "options": {
                 "cwd": "${fileDirname}"
@@ -30,14 +30,22 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
             }
         },
         {
             "label": "C/C++: run active C program",
-            "type": "shell",
+            "type": "process",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "C/C++:clang: compile active C program"
+                "C/C++: compile active C program"
             ],
             "command": "${fileDirname}/${fileBasenameNoExtension}.out",
             "windows": {

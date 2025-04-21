@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "C/C++:clang: build and debug active C program",
+            "name": "C/C++: build and debug active C program",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
@@ -11,9 +11,12 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
-            "preLaunchTask": "C/C++:clang: compile active C program",
+            "preLaunchTask": "C/C++: compile active C program",
             "windows": {
-                "program": "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                // Use gdb for Windows.
+                "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "MIMode": "gdb",
+                "miDebuggerPath": "gdb.exe"
             }
         }
     ],
