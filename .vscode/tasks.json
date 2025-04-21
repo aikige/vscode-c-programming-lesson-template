@@ -13,17 +13,17 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.out"
             ],
-			"windows": {
+            "windows": {
                 // Use gcc for Windows.
-				"command": "gcc",
-				"args": [
+                "command": "gcc",
+                "args": [
                     "-Wall",
                     "-g",
                     "${file}",
                     "-o",
                     "${fileDirname}\\${fileBasenameNoExtension}.exe"
                 ]
-			},
+            },
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -49,7 +49,7 @@
             ],
             "command": "${fileDirname}/${fileBasenameNoExtension}.out",
             "windows": {
-                "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "command": "${fileDirname}\\${fileBasenameNoExtension}.exe"
             },
             "group": {
                 "kind": "test",

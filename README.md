@@ -1,4 +1,4 @@
-# Visual Studio Code Template to Learn C Programming with LLVM
+# Visual Studio Code Template to Learn C Programming
 
 This template provides `.vscode/tasks.json` and `.vscode/launch.json` files which are useful to start learning C programming using Visual Studio Code (VS Code).
 
