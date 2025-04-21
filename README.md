@@ -4,6 +4,11 @@ This template provides `.vscode/tasks.json` and `.vscode/launch.json` files whic
 
 ## Usage
 
+[command palette]:https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette
+[activity bar]:https://code.visualstudio.com/api/ux-guidelines/activity-bar
+[editor toolbar]:https://code.visualstudio.com/api/ux-guidelines/editor-actions
+[status bar]:https://code.visualstudio.com/api/ux-guidelines/status-bar
+
 This project helps user to run an active C source code.
 Here, the source code is assumed to include `main()` and not depend on external libraries or objects.
 
@@ -12,12 +17,13 @@ Here, the source code is assumed to include `main()` and not depend on external 
 1. Open downloaded project folder by VS Code.
 1. Edit `example.c` or create new C program in the project folder.
 1. Compile and run/debug active C source code by either of following method:
-    1. Open command pallet and execute `Task: Run Test Task`.
-    1. Click `Run and Debug` editor action button in the editor pane.
-    1. Click `Run and Debug` button in activity bar.
-    1. Click `Select and Start Debug Configuration button in status bar.
+    1. Open [command palette] and execute `Task: Run Test Task`.
+    1. Click `Run and Debug` button in the [editor toolbar].
+    1. Click `Run and Debug` button in [activity bar], or press `F5` key on the keyboard.
+    1. Click `Select and Start Debug Configuration` button in [status bar].
 
 ## Preparing C Programming Environment
+
 [scoop]:https://scoop.sh/
 [MinGW]:https://www.mingw-w64.org/
 [LLVM]:https://www.llvm.org/
